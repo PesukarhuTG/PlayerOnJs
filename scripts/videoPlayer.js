@@ -51,7 +51,6 @@ export const videoPlayerInit = () => {
     videoButtonStop.addEventListener('click', stopPlay);
 
     //строка прогресса видео
-
     videoPlayer.addEventListener('timeupdate', () => {
         const currentTime = videoPlayer.currentTime; //получаем данные из плеера
         const duration = videoPlayer.duration; //получаем данные из плеера
@@ -92,7 +91,6 @@ export const videoPlayerInit = () => {
 
     //клики на иконках громкости
     volumeDown.addEventListener('click', () => {
-
 
         if (videoPlayer.volume != 0) {
             videoPlayer.volume = 0; //снижаем громкость
