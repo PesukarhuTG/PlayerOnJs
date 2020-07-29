@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YaTunes</title>
-
-    <link rel="stylesheet" href="styles/normalize.css">
-    <link rel="stylesheet" href="styles/font-awesome.min.css">
-    <link rel="stylesheet" href="styles/style.min.css">
+    <link rel="stylesheet" href="./styles/normalize.css">
+    <link rel="stylesheet" href="./styles/font-awesome.min.css">
+    <link rel="stylesheet" href="./styles/style.min.css">
+    <script src="./scripts/index.js" type="module" defer></script>
 </head>
 
 <body>
@@ -41,6 +41,10 @@
                         <p class="video-time video-time__passed">00:00</p>
                         <input type="range" class="video-progress" min="0" max="100" step="0.1" value="0">
                         <p class="video-time video-time__total">00:00</p>
+                        <span class="volume-icon volume-down fa fa-volume-down "></span>
+                        <input type="range" class="video-volume" min="0" max="100" step="1" value="100">
+                        <span class="volume-icon volume-up fa fa-volume-up"></span>
+                        <button class="video-button video-button__fullscreen fa fa-expand"></button>
                     </nav>
                 </div>
 
@@ -162,17 +166,23 @@
                         </ul>
                     </form>
 
+                    <div class="radio-volume">
+                        <span class="radio-volume-icon radio-volume-down fa fa-volume-down "></span>
+                        <input type="range" class="radio-volume-input" min="0" max="100" step="1" value="100">
+                        <span class="radio-volume-icon radio-volume-up fa fa-volume-up"></span>
+                    </div>
+
                 </div>
             </div>
 
             <footer class="footer-fix radio-footer">
+
                 <button class="radio-stop fa fa-play"></button>
             </footer>
         </article>
 
     </main>
 
-    <script src="scripts/index.js" type="module"></script>
 </body>
 
 </html>

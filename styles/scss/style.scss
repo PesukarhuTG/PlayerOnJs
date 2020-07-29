@@ -188,3 +188,35 @@ main {
 .red-text {
   color: #F51E38;
 }
+
+.volume-icon {
+  margin:5px;
+}
+
+.video-volume {
+  max-width: 100px;
+}
+
+.volume-icon {
+min-width:15px;
+}
+
+.radio-volume{
+  max-width: 200px;
+}
+
+div.radio-volume {
+  display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+    height: 10vh;
+    margin: 0 auto;
+}
+
+.radio-volume-icon {
+    font-size: 35px;
+    margin: 0 10px;
+}
+

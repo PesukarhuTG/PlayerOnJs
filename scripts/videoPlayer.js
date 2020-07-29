@@ -6,6 +6,10 @@ export const videoPlayerInit = () => {
     const videoTimePassed = document.querySelector('.video-time__passed');
     const videoTimeTotal = document.querySelector('.video-time__total');
     const videoProgress = document.querySelector('.video-progress');
+    const videoFullScreen = document.querySelector('.video-button__fullscreen');
+    const videoVolume = document.querySelector('.video-volume');
+    const volumeDown = document.querySelector('.volume-down');
+    const volumeUp = document.querySelector('.volume-up');
 
     //ф-ция сменяющая иконки play/pause
     const toggleIcon = () => {
@@ -54,7 +58,6 @@ export const videoPlayerInit = () => {
 
         //строка прогресса с бегунком это input, у него есть value
         videoProgress.value = (currentTime / duration) * 100; //определяем, ск прошло времени из всего времени
-
         let minutePassed = Math.floor(currentTime / 60); //округление минут
         let secondsPassed = Math.floor(currentTime % 60); //округление секунд
 
@@ -65,12 +68,56 @@ export const videoPlayerInit = () => {
         videoTimeTotal.textContent = `${addZero(minuteTotal)}:${addZero(secondsTotal)}`;
     });
 
-    //возможность переключения строки прогресса через событие change у input
-    videoProgress.addEventListener('change', () => {
+    //возможность переключения строки прогресса через обращение к input
+    videoProgress.addEventListener('input', () => {
         const duration = videoPlayer.duration;
         const value = videoProgress.value;
 
         videoPlayer.currentTime = (value * duration) / 100; //то место, на которое кликнули
-    })
+    });
+
+    //расшаривание экрана
+    videoFullScreen.addEventListener('click', () => {
+        videoPlayer.requestFullscreen();
+    });
+
+    //бегунок громкости в промежутке от 0..1
+    videoVolume.addEventListener('input', () => {
+        videoPlayer.volume = videoVolume.value / 100;
+    });
+
+    //начальная позиция на половине громкости
+    videoPlayer.volume = 0.5;
+    videoVolume.value = videoPlayer.volume * 100;
+
+    //клики на иконках громкости
+    volumeDown.addEventListener('click', () => {
+
+
+        if (videoPlayer.volume != 0) {
+            videoPlayer.volume = 0; //снижаем громкость
+            videoVolume.value = videoPlayer.volume * 100; //сдвигаем бегунок
+            volumeDown.classList.remove('fa-volume-down'); //меняем иконку
+            volumeDown.classList.add('fa-volume-off');
+        } else {
+            videoPlayer.volume = 0.5; //возвращаем громкость
+            videoVolume.value = videoPlayer.volume * 100;  //возвращаем бегунок
+
+            volumeDown.classList.remove('fa-volume-off');
+            volumeDown.classList.add('fa-volume-down');
+        }
+    });
+
+    volumeUp.addEventListener('click', () => {
+
+        if (videoPlayer.volume != 1) {
+            videoPlayer.volume = 1; //повышаем громкость
+            videoVolume.value = videoPlayer.volume * 100; //сдвигаем бегунок
+
+        } else {
+            videoPlayer.volume = 0.5; //возвращаем громкость
+            videoVolume.value = videoPlayer.volume * 100; //возвращаем бегунок
+        }
+    });
 
 }

@@ -1,3 +1,126 @@
 export const radioPlayerInit = () => {
-    console.log('Radio Init');
-}; //объявили функцию и сразу экспортировали
+    const radio = document.querySelector('.radio');
+    const radioCoverImg = document.querySelector('.radio-cover__img');
+    const radioNavigation = document.querySelector('.radio-navigation');
+    const radioItems = document.querySelectorAll('.radio-item');
+    const radioHeaderBig = document.querySelector('.radio-header__big');
+    const radioStop = document.querySelector('.radio-stop');
+    const radioVolume = document.querySelector('.radio-volume-input');
+    const radioVolumeDown = document.querySelector('.radio-volume-down');
+    const radioVolumeUp = document.querySelector('.radio-volume-up');
+
+    //работаем с конструктором, который создает audio
+    const audio = new Audio();
+    audio.type = 'audio/aac';
+    console.dir(audio);
+
+    //радио не выбрано - кнопка заблокирована
+    radioStop.disabled = true;
+
+    //ф-ция смены иконки play/stop
+    const changeIconPlay = () => {
+        if (audio.paused) {
+            radio.classList.remove('play'); //когда музыка на паузе удаляем класс
+            radioStop.classList.remove('fa-stop');
+            radioStop.classList.add('fa-play');
+        } else {
+            radio.classList.add('play'); //когда музыка играет добавляем класс
+            radioStop.classList.remove('fa-play');
+            radioStop.classList.add('fa-stop');
+        }
+    };
+
+    //ф-ция для красивости обводки выбранного элемента
+    const selectItem = elem => {
+        radioItems.forEach(item => item.classList.remove('select'));
+        elem.classList.add('select');
+    };
+
+
+    //когда выбираем радио, нужно прописать его src
+    //реализуем через делегирование события event
+    //в event интересует target, т.е. то,что вызвало событие (у нас -input)
+    radioNavigation.addEventListener('change', event => {
+        const target = event.target;
+
+        //добавление красивости элементу
+        const parent = target.closest('.radio-item');
+        selectItem(parent);
+
+        //нахождение у родителя названия радиостанции и подставление в заголовок
+        const title = parent.querySelector('.radio-name').textContent;
+        radioHeaderBig.textContent = title;
+
+        //нахождение у родителя картинки радиостанции и подставление большую иконку
+        const urlImg = parent.querySelector('.radio-img').src;
+        radioCoverImg.src = urlImg;
+
+
+
+        radioStop.disabled = false; //разблокируем кнопку
+        audio.src = target.dataset.radioStantion; //у eventa обращаемся к свойству с адресом радиостанции
+        audio.play(); //запускаем радиостанцию
+        changeIconPlay(); //ф-ция смены иконки play/pause
+    });
+
+    //реализация кнопки Stop
+    radioStop.addEventListener('click', () => {
+        if (audio.paused) {
+            audio.play();
+        } else {
+            audio.pause();
+        }
+        changeIconPlay(); //ф-ция смены иконки play/pause
+    });
+
+    //бегунок громкости в промежутке от 0..1
+    radioVolume.addEventListener('input', () => {
+        audio.volume = radioVolume.value/100;
+    });
+
+    //начальная позиция на половине громкости
+    audio.volume = 0.5;
+    radioVolume.value = audio.volume * 100;
+    console.log(radioVolume.value);
+
+    
+
+     //клики на иконках громкости
+     radioVolumeDown.addEventListener('click', () => {
+
+
+        if (audio.volume != 0) {
+            audio.volume = 0; //снижаем громкость
+            radioVolume.value = audio.volume * 100; //сдвигаем бегунок
+            radioVolumeDown.classList.remove('fa-volume-down'); //меняем иконку
+            radioVolumeDown.classList.add('fa-volume-off');
+        } else {
+            audio.volume = 0.5; //возвращаем громкость
+            radioVolume.value = audio.volume * 100;  //возвращаем бегунок
+
+            radioVolumeDown.classList.remove('fa-volume-off');
+            radioVolumeDown.classList.add('fa-volume-down');
+        }
+    });
+
+    radioVolumeUp.addEventListener('click', () => {
+
+        if (audio.volume != 1) {
+            audio.volume = 1; //повышаем громкость
+            radioVolume.value = audio.volume * 100; //сдвигаем бегунок
+
+        } else {
+            audio.volume = 0.5; //возвращаем громкость
+            radioVolume.value = audio.volume * 100; //возвращаем бегунок
+        }
+    });
+
+
+
+
+
+
+
+
+
+};
