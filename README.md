@@ -11,4 +11,14 @@ Step 2:
 - stop video;
 - using the video scroll bar
 
-► Preview by the link https://pesukarhutg.github.io/PlayerOnJs/
+Step 3:
+* **Added functionality in RadioPlayer module radioPlayer.js**: 
+- start playing the radio by clicking on the radio icon;
+- stop playing radio by clicking on the pause button;
+- add volume scroll bar + interactive volume icons;
+- change the heading of the radio station and icons on the main section of the screen after choosing a radio-station
+
+In addition: in Video Player also added volume scroll bar + interactive volume icons;
+
+
+**Preview by the link https://pesukarhutg.github.io/PlayerOnJs/**
