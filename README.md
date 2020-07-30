@@ -23,7 +23,6 @@ Step 4:
 - start/pause playing the track by clicking on the play button;
 - add progress scroll bar with current + total timing;
 - change the heading and icon img of the track on the main section of the screen.
-
-In addition: partial fix of playing music with switching tabs
+Common: fix switching tabs
 
 **Preview by the link https://pesukarhutg.github.io/PlayerOnJs/**
