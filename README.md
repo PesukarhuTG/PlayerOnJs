@@ -20,9 +20,9 @@ Step 3:
 
 Step 4:
 * **Added functionality in MusicPlayer module musicPlayer.js**: 
-- start/pause playing the track by clicking on the play button;
-- add progress scroll bar with current + total timing;
-- change the heading and icon img of the track on the main section of the screen.
+- start/pause playing the track by clicking on the play button;<br>
+- add progress scroll bar with current + total timing;<br>
+- change the heading and icon img of the track on the main section of the screen.<br>
 Common: fix switching tabs
 
 **Preview by the link https://pesukarhutg.github.io/PlayerOnJs/**
