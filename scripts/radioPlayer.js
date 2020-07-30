@@ -111,5 +111,11 @@ export const radioPlayerInit = () => {
         }
     });
 
+    radioPlayerInit.stop = () => {
+        audio.pause();
+        changeIconPlay();
 
-};
+    };
+ 
+
+}

@@ -16,13 +16,9 @@ function deactivationPlayer() {
     playerBtn.forEach(itemBtn => itemBtn.classList.remove('active'));
     playerBlock.forEach(itemBlock => itemBlock.classList.remove('active'));
 
-    const videoPlayer = document.querySelector('.video-player');
-    videoPlayer.pause(); // =========
-    videoPlayer.currentTime = 0;// =========
-
-    const audioPlayer = document.querySelector('.audio-player');// =========
-    audioPlayer.pause(); // =========
-    audioPlayer.currentTime = 0;
+    musicPlayerInit.stop();
+    videoPlayerInit.stop();
+    radioPlayerInit.stop();
 
 };
 

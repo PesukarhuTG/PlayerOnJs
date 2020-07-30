@@ -117,4 +117,14 @@ export const musicPlayerInit = () => {
         audioPlayer.currentTime = progress; //то место, на которое кликнули
      });
 
-};
+     //добавим метод стоп к ф-ции
+     musicPlayerInit.stop = () => {
+      if (!audioPlayer.paused) {
+          audioPlayer.pause();
+          audio.classList.remove('play');
+          audioButtonPlay.classList.remove('fa-pause');
+          audioButtonPlay.classList.add('fa-play');
+      }
+     };
+
+}
