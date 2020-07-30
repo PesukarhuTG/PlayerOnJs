@@ -1,3 +1,5 @@
+import { addZero } from './supScript.js'
+
 export const videoPlayerInit = () => {
 
     const videoPlayer = document.querySelector('.video-player');
@@ -37,9 +39,6 @@ export const videoPlayerInit = () => {
         videoPlayer.currentTime = 0;//время сводим к нулю у свойства currenttime
     };
 
-    //ф-ция добавление 0 ко времени
-    const addZero = n => n < 10 ? '0' + n : n;
-
     //щелкая на окно плеера запускаем видео
     videoPlayer.addEventListener('click', togglePlay);
     videoButtonPlay.addEventListener('click', togglePlay);
@@ -57,11 +56,11 @@ export const videoPlayerInit = () => {
 
         //строка прогресса с бегунком это input, у него есть value
         videoProgress.value = (currentTime / duration) * 100; //определяем, ск прошло времени из всего времени
-        let minutePassed = Math.floor(currentTime / 60); //округление минут
-        let secondsPassed = Math.floor(currentTime % 60); //округление секунд
+        let minutePassed = Math.floor(currentTime / 60) || '0'; //округление минут
+        let secondsPassed = Math.floor(currentTime % 60) || '0'; //округление секунд
 
-        let minuteTotal = Math.floor(duration / 60); //округление минут
-        let secondsTotal = Math.floor(duration % 60); //округление секунд
+        let minuteTotal = Math.floor(duration / 60) || '0'; //округление минут
+        let secondsTotal = Math.floor(duration % 60) || '0'; //округление секунд
 
         videoTimePassed.textContent = `${addZero(minutePassed)}:${addZero(secondsPassed)}`; //textContent выводит содержимое
         videoTimeTotal.textContent = `${addZero(minuteTotal)}:${addZero(secondsTotal)}`;

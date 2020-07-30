@@ -14,7 +14,6 @@ export const radioPlayerInit = () => {
     //работаем с конструктором, который создает audio
     const audio = new Audio();
     audio.type = 'audio/aac';
-    console.dir(audio);
 
     //радио не выбрано - кнопка заблокирована
     radioStop.disabled = true;
