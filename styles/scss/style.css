@@ -12,13 +12,13 @@ html {
 }
 
 body {
-  height: 100%;
-  max-height: 100vh;
+  min-height: 100%;
+  height: auto !important;
+  position: relative;
   font-family: Arial, sans-serif;
   font-size: 16px;
   color: #fff;
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#090d38), to(#13185e));
-  background-image: linear-gradient(#090d38 0%, #13185e 100%);
+  background-color: #13185e;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -72,9 +72,6 @@ header.section-header {
   font-size: 3rem;
 }
 
-/*main {
-  padding-bottom: 100px;
-}*/
 .temp {
   height: 60%;
   display: -webkit-box;
@@ -111,13 +108,7 @@ header.section-header {
 
 @media (max-width: 1024px) {
   .container {
-    min-width: auto;
-  }
-}
-
-@media (max-width: 650px) {
-  .container {
-    min-width: auto;
+    min-width: 100%;
   }
 }
 
@@ -230,8 +221,9 @@ header.section-header {
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 20px;
+  padding: 0 12px;
   text-align: center;
-  padding-bottom: 11vh;
+  padding-bottom: 10vh;
 }
 
 .radio-player {
@@ -259,7 +251,7 @@ header.section-header {
 
 @media (max-width: 1024px) {
   .radio-cover {
-    margin-right: 0;
+    margin-right: 10px;
   }
 }
 
@@ -309,18 +301,17 @@ header.section-header {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  font-size: 48px;
+  font-size: 46px;
 }
 
 @media (max-width: 650px) {
   .radio-header__big {
-    font-size: 36px;
+    font-size: 30px;
   }
 }
 
 .radio-container {
   width: 100%;
-  padding: 0 20px;
 }
 
 .radio-list {
@@ -333,6 +324,7 @@ header.section-header {
       -ms-flex-pack: center;
           justify-content: center;
   margin-top: 25px;
+  margin-bottom: 20px;
 }
 
 .radio-item {
